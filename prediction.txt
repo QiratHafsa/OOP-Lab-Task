@@ -1,0 +1,58 @@
+Task 1
+=========Before Change=========
+credits 14,6,10
+=========After Change=========
+credits 14,36,10
+
+------------------------------------------------------------------------------------------
+Task 2
+=========Before Change=========
+credits 30,60
+=========After Change=========
+credits 33,64
+
+-------------------------------------------------------------------------------------------
+Task 3
+=========Before Change=========
+All Three Functions will be executed as Java allows you to reuse a method name only if the list of input parameters (their count or data types) is different.
+Abeer Amina enrolled in CSC241
+Abeer Amina enrolled in CSC241 Section 2
+Abeer Amina enrolled in course number 241
+
+=========After Changes=========
+After changing the input parameters of void enroll to "void enroll(string courseCode, int section)"
+It will show error telling that we are repeating the function name and input parameters.
+Java did not give an error to changing return type Because its signature is still enroll(String). Java ignores the return type (void vs string) when picking a method. If we were to call st.enroll("CSC241"), Java wouldn't know which of the two enroll(String) methods to execute!
+
+-------------------------------------------------------------------------------------------
+Task 4
+Experiment A (Primitive):
+- Before: 10 | Inside: 99 | After: 10
+- Explanation: The argument value is copied into the parameter x, so changing x inside the method does not affect the caller's variable.
+
+Experiment B (Object Mutation):
+- Before: 20 | Inside: 99 | After: 99
+- Explanation: The argument value is copied into the parameter st, so both variables point to the same object reference, allowing field mutation to affect the caller.
+
+Experiment C (Object Reassignment):
+- Before: Ali | Inside: Temporary | After: Ali
+- Explanation: The argument value is copied into the parameter st, so assigning st = new StudentTask4() only reassigns the local parameter reference and cannot redirect the caller's reference variable.
+
+-------------------------------------------------------------------------------------------
+Task 5
+1. Initial State:
+   - exp1 (CNN Model) will display Epochs: 10/50.
+   - exp2 (RNN Model) will display Epochs: 5/30.
+
+2. Independent State & Overload Execution:
+   - exp1.runEpochs(10) will call runEpochs(int) and increase exp1.completedEpochs from 10 to 20.
+   - exp2.runEpochs(5, 2) will call the overloaded runEpochs(int, int) and increase exp2.completedEpochs by (5 + 2) = 7, raising it from 5 to 12.
+   - exp1 and exp2 operate independently, so modifying exp1 will not affect exp2.
+
+3. Remaining Epochs Calculation:
+   - exp1.remainingEpochs() will return 30 (50 - 20).
+   - exp2.remainingEpochs() will return 18 (30 - 12).
+
+4. Helper Method Pass-By-Value Mutation:
+   - Calling modifyExperiment(exp1) will pass a copy of the object reference into the parameter exp.
+   - Calling exp.runEpochs(5) inside the helper method will mutate the shared object, increasing exp1.completedEpochs from 20 to 25.
